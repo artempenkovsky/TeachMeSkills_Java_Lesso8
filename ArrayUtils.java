@@ -14,10 +14,11 @@ public class ArrayUtils {
     }
 
     public static void printArrayReverse(int[] array) {
-        for (int i = array.length - 1; i >= 0; i--) { // Обратный порядок
-            System.out.print(array[i] + " ");
+        for (int i = 0; i < array.length / 2; i++) {
+            int newArray = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = newArray;
         }
-        System.out.println();
     }
 
     public static int findFirstIndex(int[] array, int firstElement) {
@@ -44,7 +45,7 @@ public class ArrayUtils {
     }
 
     public static int[] getSubArrayOfPage(int[] array, int page, int pagelength) {
-        if ((array.length < 1) || (array.length < ((page - 1) * pagelength)) || (array.length == 0)) {
+        if ((array.length < 1) || (array.length < ((page - 1) * pagelength))) {
             throw new IllegalArgumentException("Проверка не пройдена");
         }
         int leftIndex = (page - 1) * pagelength;
